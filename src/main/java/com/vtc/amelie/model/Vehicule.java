@@ -22,8 +22,8 @@ public class Vehicule {
     @Column(name = "immatriculation", nullable = false)
     private String immatriculation;
 
-    @ManyToMany(mappedBy = "vehicules", cascade = CascadeType.PERSIST)
-    private List<Conducteur> conducteurs;
+    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.PERSIST)
+    private List<Emprunt> emprunts;
 
     public Vehicule() {
     }
@@ -75,15 +75,15 @@ public class Vehicule {
         this.immatriculation = immatriculation;
     }
 
-    public List<Conducteur> getConducteurs() {
-        return conducteurs;
+    public List<Emprunt> getEmprunts() {
+        return emprunts;
     }
-
+/*
     public void addConducteur(Conducteur conducteur) {
         conducteurs.add(conducteur);
         conducteur.getVehicules().add(this);
     }
-
+*/
     @Override
     public String toString() {
         return "Vehicule{" +

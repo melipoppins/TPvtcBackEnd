@@ -16,7 +16,7 @@ public class Conducteur {
 
     @Column(nullable = false)
     private String prenom;
-
+/*
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "conducteurs_vehicules",
@@ -24,6 +24,9 @@ public class Conducteur {
             inverseJoinColumns = {@JoinColumn(name = "idVehicule")}
     )
     private List<Vehicule> vehicules;
+*/
+    @OneToMany(mappedBy = "conducteur", cascade = CascadeType.PERSIST)
+    private  List<Emprunt> emprunts;
 
     public Conducteur() {
     }
@@ -57,22 +60,21 @@ public class Conducteur {
         this.prenom = prenom;
     }
 
-    public List<Vehicule> getVehicules() {
-        return vehicules;
+    public List<Emprunt> getEmprunts() {
+        return emprunts;
     }
-
+/*
     public void addVehicule (Vehicule vehicule) {
         vehicules.add(vehicule);
         vehicule.getConducteurs().add(this);
     }
-
+*/
     @Override
     public String toString() {
         return "Conducteur{" +
                 "idConducteur=" + idConducteur +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", vehicules=" + vehicules.stream().map(Vehicule::getMarque).collect(Collectors.toList()) +
                 '}';
     }
 }
