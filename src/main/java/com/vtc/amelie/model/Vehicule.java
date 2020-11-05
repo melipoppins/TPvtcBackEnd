@@ -8,7 +8,7 @@ import java.util.List;
 public class Vehicule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_vehicule;
+    private Long idVehicule;
 
     @Column(name = "marque", nullable = false)
     private String marque;
@@ -28,20 +28,19 @@ public class Vehicule {
     public Vehicule() {
     }
 
-    public Vehicule(Long id_vehicule, String marque, String modele, String couleur, String immatriculation) {
-        this.id_vehicule = id_vehicule;
+    public Vehicule(String marque, String modele, String couleur, String immatriculation) {
         this.marque = marque;
         this.modele = modele;
         this.couleur = couleur;
         this.immatriculation = immatriculation;
     }
 
-    public Long getId_vehicule() {
-        return id_vehicule;
+    public Long getIdVehicule() {
+        return idVehicule;
     }
 
-    public void setId_vehicule(Long id_vehicule) {
-        this.id_vehicule = id_vehicule;
+    public void setIdVehicule(Long idVehicule) {
+        this.idVehicule = idVehicule;
     }
 
     public String getMarque() {
@@ -88,7 +87,7 @@ public class Vehicule {
     @Override
     public String toString() {
         return "Vehicule{" +
-                "id_vehicule=" + id_vehicule +
+                "idVehicule=" + idVehicule +
                 ", marque='" + marque + '\'' +
                 ", modele='" + modele + '\'' +
                 ", couleur='" + couleur + '\'' +

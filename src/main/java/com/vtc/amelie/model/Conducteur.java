@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class Conducteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_conducteur;
+    private Long idConducteur;
 
     @Column(nullable = false)
     private String nom;
@@ -20,26 +20,25 @@ public class Conducteur {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "conducteurs_vehicules",
-            joinColumns = {@JoinColumn(name = "id_conducteur")},
-            inverseJoinColumns = {@JoinColumn(name = "id_vehicule")}
+            joinColumns = {@JoinColumn(name = "idConducteur")},
+            inverseJoinColumns = {@JoinColumn(name = "idVehicule")}
     )
     private List<Vehicule> vehicules;
 
     public Conducteur() {
     }
 
-    public Conducteur(Long id_conducteur, String nom, String prenom) {
-        this.id_conducteur = id_conducteur;
+    public Conducteur(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }
 
-    public Long getId_conducteur() {
-        return id_conducteur;
+    public Long getIdConducteur() {
+        return idConducteur;
     }
 
-    public void setId_conducteur(Long id_conducteur) {
-        this.id_conducteur = id_conducteur;
+    public void setIdConducteur(Long idConducteur) {
+        this.idConducteur = idConducteur;
     }
 
     public String getNom() {
@@ -70,7 +69,7 @@ public class Conducteur {
     @Override
     public String toString() {
         return "Conducteur{" +
-                "id_conducteur=" + id_conducteur +
+                "idConducteur=" + idConducteur +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", vehicules=" + vehicules.stream().map(Vehicule::getMarque).collect(Collectors.toList()) +
