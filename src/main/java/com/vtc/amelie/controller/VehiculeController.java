@@ -2,6 +2,7 @@ package com.vtc.amelie.controller;
 
 import com.vtc.amelie.exception.ResourceNotFoundException;
 import com.vtc.amelie.model.Vehicule;
+import com.vtc.amelie.model.VehiculeDTO;
 import com.vtc.amelie.repository.VehiculeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1")
 public class VehiculeController {
+
     @Autowired
     private VehiculeRepository vehiculeRepository;
 
@@ -23,6 +25,12 @@ public class VehiculeController {
     public List<Vehicule> getAllVehicules() {
 
         return vehiculeRepository.findAll();
+    }
+
+    @GetMapping("/vehicules/min")
+    public List<VehiculeDTO> getAllMinVehicules() {
+
+        return vehiculeRepository.findAllVehicules();
     }
 
     @GetMapping("/vehicules/{id}")

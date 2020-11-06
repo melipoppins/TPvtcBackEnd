@@ -2,6 +2,7 @@ package com.vtc.amelie.controller;
 
 import com.vtc.amelie.exception.ResourceNotFoundException;
 import com.vtc.amelie.model.Conducteur;
+import com.vtc.amelie.model.ConducteurDTO;
 import com.vtc.amelie.repository.ConducteurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,12 @@ public class ConducteurController {
     public List<Conducteur> getAllConducteurs() {
 
         return conducteurRepository.findAll();
+    }
+
+    @GetMapping("/conducteurs/min")
+    public List<ConducteurDTO> getAllMinConducteurs() {
+
+        return conducteurRepository.findAllConducteurs();
     }
 
     @GetMapping("/conducteurs/{id}")

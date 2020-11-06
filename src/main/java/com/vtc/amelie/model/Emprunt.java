@@ -1,8 +1,5 @@
 package com.vtc.amelie.model;
 
-import com.vtc.amelie.model.Conducteur;
-import com.vtc.amelie.model.Vehicule;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,20 +7,21 @@ import javax.persistence.*;
 public class Emprunt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idEmprunt;
+    private Long idEmprunt;
 
     @ManyToOne
     @JoinColumn(name = "idConducteur")
-    Conducteur conducteur;
+    private Conducteur conducteur;
 
     @ManyToOne
     @JoinColumn(name = "idVehicule")
-    Vehicule vehicule;
+    private Vehicule vehicule;
 
     public Emprunt() {
     }
 
-    public Emprunt(Conducteur conducteur, Vehicule vehicule) {
+    public Emprunt(Long idEmprunt, Conducteur conducteur, Vehicule vehicule) {
+        this.idEmprunt = idEmprunt;
         this.conducteur = conducteur;
         this.vehicule = vehicule;
     }

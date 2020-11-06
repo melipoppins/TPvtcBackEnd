@@ -28,7 +28,8 @@ public class Vehicule {
     public Vehicule() {
     }
 
-    public Vehicule(String marque, String modele, String couleur, String immatriculation) {
+    public Vehicule(Long idVehicule, String marque, String modele, String couleur, String immatriculation) {
+        this.idVehicule = idVehicule;
         this.marque = marque;
         this.modele = modele;
         this.couleur = couleur;
@@ -78,12 +79,11 @@ public class Vehicule {
     public List<Emprunt> getEmprunts() {
         return emprunts;
     }
-/*
-    public void addConducteur(Conducteur conducteur) {
-        conducteurs.add(conducteur);
-        conducteur.getVehicules().add(this);
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
-*/
+
     @Override
     public String toString() {
         return "Vehicule{" +

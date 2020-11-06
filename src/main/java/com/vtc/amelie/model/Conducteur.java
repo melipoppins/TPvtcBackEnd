@@ -2,7 +2,6 @@ package com.vtc.amelie.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "conducteur")
@@ -26,7 +25,7 @@ public class Conducteur {
     private List<Vehicule> vehicules;
 */
     @OneToMany(mappedBy = "conducteur", cascade = CascadeType.PERSIST)
-    private  List<Emprunt> emprunts;
+    private List<Emprunt> emprunts;
 
     public Conducteur() {
     }
@@ -63,12 +62,11 @@ public class Conducteur {
     public List<Emprunt> getEmprunts() {
         return emprunts;
     }
-/*
-    public void addVehicule (Vehicule vehicule) {
-        vehicules.add(vehicule);
-        vehicule.getConducteurs().add(this);
+
+    public void setEmprunts(List<Emprunt> emprunts) {
+        this.emprunts = emprunts;
     }
-*/
+
     @Override
     public String toString() {
         return "Conducteur{" +

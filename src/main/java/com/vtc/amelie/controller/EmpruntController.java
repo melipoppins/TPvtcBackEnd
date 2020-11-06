@@ -2,6 +2,7 @@ package com.vtc.amelie.controller;
 
 import com.vtc.amelie.exception.ResourceNotFoundException;
 import com.vtc.amelie.model.Emprunt;
+import com.vtc.amelie.model.EmpruntDTO;
 import com.vtc.amelie.repository.EmpruntRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,12 @@ public class EmpruntController {
     public List<Emprunt> getAllEmprunts() {
 
         return empruntRepository.findAll();
+    }
+
+    @GetMapping("/emprunts/min")
+    public List<EmpruntDTO> getAllMinEmprunts() {
+
+        return empruntRepository.findAllEmprunts();
     }
 
     @GetMapping("/emprunts/{id}")
