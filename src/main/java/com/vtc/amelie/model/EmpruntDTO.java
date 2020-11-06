@@ -2,13 +2,13 @@ package com.vtc.amelie.model;
 
 public class EmpruntDTO {
     private Long id;
-    private Long idConducteur;
-    private Long idVehicule;
+    private Conducteur idConducteur;
+    private Vehicule idVehicule;
 
     public EmpruntDTO() {
     }
 
-    public EmpruntDTO(Long id, Long idConducteur, Long idVehicule) {
+    public EmpruntDTO(Long id, Conducteur idConducteur, Vehicule idVehicule) {
         this.id = id;
         this.idConducteur = idConducteur;
         this.idVehicule = idVehicule;
@@ -22,19 +22,19 @@ public class EmpruntDTO {
         this.id = id;
     }
 
-    public Long getIdConducteur() {
+    public Conducteur getIdConducteur() {
         return idConducteur;
     }
 
-    public void setIdConducteur(Long idConducteur) {
+    public void setIdConducteur(Conducteur idConducteur) {
         this.idConducteur = idConducteur;
     }
 
-    public Long getIdVehicule() {
+    public Vehicule getIdVehicule() {
         return idVehicule;
     }
 
-    public void setIdVehicule(Long idVehicule) {
+    public void setIdVehicule(Vehicule idVehicule) {
         this.idVehicule = idVehicule;
     }
 
