@@ -35,6 +35,13 @@ public class Conducteur {
         this.prenom = prenom;
     }
 
+    public Conducteur(Long idConducteur, String nom, String prenom, List<Emprunt> emprunts) {
+        this.idConducteur = idConducteur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.emprunts = emprunts;
+    }
+
     public Long getIdConducteur() {
         return idConducteur;
     }

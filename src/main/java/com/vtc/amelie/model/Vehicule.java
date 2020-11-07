@@ -28,6 +28,13 @@ public class Vehicule {
     public Vehicule() {
     }
 
+    public Vehicule(String marque, String modele, String couleur, String immatriculation) {
+        this.marque = marque;
+        this.modele = modele;
+        this.couleur = couleur;
+        this.immatriculation = immatriculation;
+    }
+
     public Vehicule(Long idVehicule, String marque, String modele, String couleur, String immatriculation) {
         this.idVehicule = idVehicule;
         this.marque = marque;
