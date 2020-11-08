@@ -22,7 +22,7 @@ public class Vehicule {
     @Column(name = "immatriculation", nullable = false)
     private String immatriculation;
 
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Emprunt> emprunts;
 
     public Vehicule() {
@@ -41,6 +41,15 @@ public class Vehicule {
         this.modele = modele;
         this.couleur = couleur;
         this.immatriculation = immatriculation;
+    }
+
+    public Vehicule(Long idVehicule, String marque, String modele, String couleur, String immatriculation, List<Emprunt> emprunts) {
+        this.idVehicule = idVehicule;
+        this.marque = marque;
+        this.modele = modele;
+        this.couleur = couleur;
+        this.immatriculation = immatriculation;
+        this.emprunts = emprunts;
     }
 
     public Long getIdVehicule() {

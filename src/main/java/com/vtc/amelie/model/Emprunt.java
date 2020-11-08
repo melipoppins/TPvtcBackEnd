@@ -9,12 +9,12 @@ public class Emprunt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmprunt;
 
-    @ManyToOne
-    @JoinColumn(name = "idConducteur")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idConducteur", referencedColumnName = "idConducteur")
     private Conducteur conducteur;
 
-    @ManyToOne
-    @JoinColumn(name = "idVehicule")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idVehicule", referencedColumnName = "idVehicule")
     private Vehicule vehicule;
 
     public Emprunt() {

@@ -24,7 +24,7 @@ public class Conducteur {
     )
     private List<Vehicule> vehicules;
 */
-    @OneToMany(mappedBy = "conducteur", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "conducteur", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Emprunt> emprunts;
 
     public Conducteur() {
