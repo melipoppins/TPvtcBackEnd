@@ -3,7 +3,9 @@ package com.vtc.amelie.controller;
 import com.vtc.amelie.exception.ResourceNotFoundException;
 import com.vtc.amelie.model.Conducteur;
 import com.vtc.amelie.model.ConducteurDTO;
+import com.vtc.amelie.model.Emprunt;
 import com.vtc.amelie.repository.ConducteurRepository;
+import com.vtc.amelie.repository.EmpruntRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,8 @@ import java.util.Map;
 public class ConducteurController {
     @Autowired
     private ConducteurRepository conducteurRepository;
+    @Autowired
+    private EmpruntRepository empruntRepository;
 
     @GetMapping("/conducteurs")
     public List<Conducteur> getAllConducteurs() {
@@ -70,5 +74,12 @@ public class ConducteurController {
         response.put("supprimé", Boolean.TRUE);
 
         return response;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------
+    @GetMapping("/conducteurs/emprunts")
+    public List<Emprunt> getAllEmprunts() {
+
+        return empruntRepository.findAll();
     }
 }

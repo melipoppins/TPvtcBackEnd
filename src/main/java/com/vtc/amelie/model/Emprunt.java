@@ -1,37 +1,43 @@
 package com.vtc.amelie.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "emprunt")
-public class Emprunt {
+@AssociationOverrides({
+        @AssociationOverride(name = "idConducteur", joinColumns = @JoinColumn(name = "idConducteur")),
+        @AssociationOverride(name = "idVehicule", joinColumns = @JoinColumn(name = "idVehicule"))
+})
+public class Emprunt implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEmprunt;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idConducteur", referencedColumnName = "idConducteur")
+    @JoinColumn(name = "idConducteur", referencedColumnName="idConducteur")
     private Conducteur conducteur;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idVehicule", referencedColumnName = "idVehicule")
+    @JoinColumn(name = "idVehicule", referencedColumnName="idVehicule")
     private Vehicule vehicule;
 
     public Emprunt() {
     }
 
-    public Emprunt(Long idEmprunt, Conducteur conducteur, Vehicule vehicule) {
-        this.idEmprunt = idEmprunt;
+    public Emprunt(Long id, Conducteur conducteur, Vehicule vehicule) {
+        this.id = id;
         this.conducteur = conducteur;
         this.vehicule = vehicule;
     }
 
-    public Long getIdEmprunt() {
-        return idEmprunt;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEmprunt(Long idEmprunt) {
-        this.idEmprunt = idEmprunt;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Conducteur getConducteur() {
@@ -50,12 +56,4 @@ public class Emprunt {
         this.vehicule = vehicule;
     }
 
-    @Override
-    public String toString() {
-        return "Emprunt{" +
-                "idEmprunt=" + idEmprunt +
-                ", conducteur=" + conducteur +
-                ", vehicule=" + vehicule +
-                '}';
-    }
 }
