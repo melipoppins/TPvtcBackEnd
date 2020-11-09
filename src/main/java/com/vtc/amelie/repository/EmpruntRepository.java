@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface EmpruntRepository extends JpaRepository<Emprunt, Long> {
-    @Query("SELECT new com.vtc.amelie.model.EmpruntDTO(e.id, e.conducteur, e.vehicule) FROM Emprunt e")
+    @Query("SELECT new com.vtc.amelie.model.EmpruntDTO(e.idEmprunt, e.conducteur, e.vehicule) FROM Emprunt e")
     List<EmpruntDTO> findAllEmprunts();
 }

@@ -2,42 +2,37 @@ package com.vtc.amelie.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Table(name = "emprunt")
-@AssociationOverrides({
-        @AssociationOverride(name = "idConducteur", joinColumns = @JoinColumn(name = "idConducteur")),
-        @AssociationOverride(name = "idVehicule", joinColumns = @JoinColumn(name = "idVehicule"))
-})
 public class Emprunt implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEmprunt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "idConducteur", referencedColumnName="idConducteur")
     private Conducteur conducteur;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "idVehicule", referencedColumnName="idVehicule")
     private Vehicule vehicule;
 
     public Emprunt() {
     }
 
-    public Emprunt(Long id, Conducteur conducteur, Vehicule vehicule) {
-        this.id = id;
+    public Emprunt(Long idEmprunt, Conducteur conducteur, Vehicule vehicule) {
+        this.idEmprunt = idEmprunt;
         this.conducteur = conducteur;
         this.vehicule = vehicule;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdEmprunt() {
+        return idEmprunt;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEmprunt(Long idEmprunt) {
+        this.idEmprunt = idEmprunt;
     }
 
     public Conducteur getConducteur() {

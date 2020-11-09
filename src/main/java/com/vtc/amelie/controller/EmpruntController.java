@@ -26,16 +26,10 @@ public class EmpruntController {
         return empruntRepository.findAll();
     }
 
-    @GetMapping("/emprunts/min")
-    public List<EmpruntDTO> getAllMinEmprunts() {
-
-        return empruntRepository.findAllEmprunts();
-    }
-
     @GetMapping("/emprunts/{id}")
     public ResponseEntity<Emprunt> getEmpruntById(@PathVariable(value = "id") Long idEmprunt) throws ResourceNotFoundException {
         Emprunt emprunt = empruntRepository.findById(idEmprunt)
-                .orElseThrow(() -> new ResourceNotFoundException("Conducteur inconnu sous l'id :: " + idEmprunt));
+                .orElseThrow(() -> new ResourceNotFoundException("Location inconnue sous l'id :: " + idEmprunt));
 
         return ResponseEntity.ok().body(emprunt);
     }
@@ -49,7 +43,7 @@ public class EmpruntController {
     @PutMapping("/emprunts/{id}")
     public ResponseEntity<Emprunt> updateEmprunt(@PathVariable(value = "id") Long idEmprunt, @Valid @RequestBody Emprunt empruntDetails) throws ResourceNotFoundException {
         Emprunt emprunt = empruntRepository.findById(idEmprunt)
-                .orElseThrow(() -> new ResourceNotFoundException("Emprunt inconnu sous l'id :: " + idEmprunt));
+                .orElseThrow(() -> new ResourceNotFoundException("Location inconnue sous l'id :: " + idEmprunt));
 
         emprunt.setConducteur(empruntDetails.getConducteur());
         emprunt.setVehicule(empruntDetails.getVehicule());

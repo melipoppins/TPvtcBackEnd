@@ -24,8 +24,7 @@ public class Conducteur {
     )
     private List<Vehicule> vehicules;
 */
-    @OneToMany(mappedBy = "conducteur", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<Emprunt> emprunts;
+
 
     public Conducteur() {
     }
@@ -35,11 +34,10 @@ public class Conducteur {
         this.prenom = prenom;
     }
 
-    public Conducteur(Long idConducteur, String nom, String prenom, List<Emprunt> emprunts) {
+    public Conducteur(Long idConducteur, String nom, String prenom) {
         this.idConducteur = idConducteur;
         this.nom = nom;
         this.prenom = prenom;
-        this.emprunts = emprunts;
     }
 
     public Long getIdConducteur() {
@@ -64,14 +62,6 @@ public class Conducteur {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public List<Emprunt> getEmprunts() {
-        return emprunts;
-    }
-
-    public void setEmprunts(List<Emprunt> emprunts) {
-        this.emprunts = emprunts;
     }
 
     @Override
