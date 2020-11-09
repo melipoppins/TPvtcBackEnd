@@ -2,6 +2,7 @@ package com.vtc.amelie.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "conducteur")
@@ -62,6 +63,21 @@ public class Conducteur {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Conducteur that = (Conducteur) o;
+        return idConducteur.equals(that.idConducteur) ||
+                (nom.equals(that.nom) &&
+                prenom.equals(that.prenom));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idConducteur, nom, prenom);
     }
 
     @Override
